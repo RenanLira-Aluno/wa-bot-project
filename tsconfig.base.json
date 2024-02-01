@@ -14,7 +14,10 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@test-api/database": ["database/src/index.ts"],
+      "@test-api/whatsapp-instance": ["whatsapp-instance/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
