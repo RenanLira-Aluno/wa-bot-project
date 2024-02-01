@@ -5,8 +5,6 @@ import { DatabaseModule } from '@test-api/database';
 import { UsersModule } from './users/users.module';
 
 @Module({
-  imports: [DatabaseModule, UsersModule],
-
-
+  imports: [DatabaseModule, UsersModule]
 })
 export class AppModule {}

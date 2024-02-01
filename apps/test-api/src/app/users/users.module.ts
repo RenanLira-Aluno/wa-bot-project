@@ -3,9 +3,12 @@ import { UsersService } from './users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '@test-api/database';
 import { UsersController } from './users.controller';
+import { ClientsModule } from '@nestjs/microservices';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [
+    TypeOrmModule.forFeature([User])
+  ],
   providers: [UsersService],
   controllers: [UsersController],
 })

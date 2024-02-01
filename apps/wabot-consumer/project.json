@@ -1,0 +1,52 @@
+{
+  "name": "wabot-consumer",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/wabot-consumer/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/wabot-consumer",
+        "main": "apps/wabot-consumer/src/main.ts",
+        "tsConfig": "apps/wabot-consumer/tsconfig.app.json",
+        "assets": ["apps/wabot-consumer/src/assets"],
+        "webpackConfig": "apps/wabot-consumer/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "wabot-consumer:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "wabot-consumer:build:development"
+        },
+        "production": {
+          "buildTarget": "wabot-consumer:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/wabot-consumer/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
