@@ -1,8 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ClientKafka } from '@nestjs/microservices';
-import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '@test-api/database';
-import { InsertResult, Repository } from 'typeorm';
 import { Whatsapp, create } from 'venom-bot';
 
 @Injectable()

@@ -9,6 +9,6 @@ export class AppController {
 
   @EventPattern('qrcode')
   getHello(@Payload() data: string) {
-    this.appGateway.socket.emit('qrcode', data)
+    this.appGateway.server.emit('qrcode', data)
   }
 }
