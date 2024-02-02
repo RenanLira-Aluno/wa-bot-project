@@ -1,19 +1,14 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from "@nestjs/common";
+import { AppGateway } from "./app.gateway";
+import { EventPattern, Payload } from "@nestjs/microservices";
 
-import { AppService } from './app.service';
-import { EventPattern, Payload } from '@nestjs/microservices';
-import { Message } from 'venom-bot';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) { }
+  constructor(private readonly appGateway: AppGateway) { }
 
-  @EventPattern('new_message:me')
-  getData(
-    @Payload() message: Message
-  ) {
-    console.log(message)
-    return this.appService.getData();
+  @EventPattern('qrcode')
+  getHello(@Payload() data: string) {
+    this.appGateway.socket.emit('qrcode', data)
   }
-
 }

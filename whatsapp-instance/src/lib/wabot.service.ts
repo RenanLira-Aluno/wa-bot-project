@@ -11,11 +11,14 @@ export class WaBotService implements OnModuleInit {
     @Inject('WA_BOT_SERVICE') private client: ClientKafka
   ) { }
 
-  onModuleInit() {
+  async onModuleInit() {
+
+    await this.client.connect()
+
     create({
       session: 'wabot',
       catchQR: (qrcode, a, at, urlCode) => {
-        this.client.emit('qrcode_catch', qrcode)
+        this.client.emit('qrcode:catch', qrcode)
       }
     }).then((client) => {
       this.instance = client

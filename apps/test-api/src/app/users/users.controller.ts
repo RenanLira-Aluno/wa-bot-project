@@ -9,9 +9,10 @@ export class UsersController {
   ) { }
 
 
-  @Get('create')
+  @Get('onBot')
   async createUser() {
-    return await this.usersService.create('renan')
+    this.usersService.openSession()
+
   }
 
 }
